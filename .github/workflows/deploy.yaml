@@ -1,0 +1,34 @@
+name: Deploy to pythonAnywhere
+run-name: deploy-to-pythonanywhere
+on: 
+  push:
+    branches:
+      - master
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I would do my build"
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I would do my tests"
+  security:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I would do my sec-tests"
+  deploy:
+    needs: security
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I would do my deploy"
+  post-check:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I would do my post-check"
+    
+
