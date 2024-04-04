@@ -14,4 +14,11 @@ def handle_request():
     json_dump = json.dumps(data_set)
 
     return json_dump
-    #return 'Hello from Flask!'
+
+@app.route('/ping', methods = ['GET'])
+def ping():
+    return {"ping":"pong"}
+
+#@app.route('/health', methods = ['GET'])
+#def health():
+#    return {"status":"up"}

@@ -1,2 +1,4 @@
 virtual/
 app/__pycache__/
+passwd
+test/
