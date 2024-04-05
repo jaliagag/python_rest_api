@@ -1,9 +1,28 @@
 # Test Flask API REST
 
 > [!IMPORTANT]  
-> - Instalar las dependencias para que funcione la documentacion
+> - Para correr la app localmente, asegurarse de instalar las dependencias para que funcione correctamente la documentacion
 
 Aplicacion desplegada en [pythonanywhere](https://www.pythonanywhere.com/); La url es `http://jaliagaent.pythonanywhere.com/`.
+
+## Test deployment
+
+[video test](https://youtu.be/fCM5rK_Rqls)
+
+## Runme
+
+Para levantar la app localmente:
+
+```bash
+git clone git@github.com:jaliagag/python_rest_api.git
+# (opcional) crear entorno virtual
+python3 -m venv virtual
+source virtual/bin/activate
+
+cd app
+pip3 install -r requiremenets.txt
+flask run
+```
 
 ## Endpoints
 
@@ -22,7 +41,17 @@ $ python3 query.py
 Le Input: this be a test
 Datetime: 2024-04-04 21:56:21.010401
 Character count: 14
-
 ```
+
+## Dockerfile
+
+Dentro de la carpeta raiz del repositorio, construimos la imagen:
+
+```bash
+docker build -t test_app:1 .
+docker run --rm -dp 5050:5000 test_app:1
+curl localhost:5050
+```
+
 
 

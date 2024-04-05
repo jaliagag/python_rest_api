@@ -35,9 +35,9 @@ def handle_request():
 def health():
     return {"status":"up"}
 
-#@app.route("/ping", methods = ["GET"])
-#def ping():
-#    return {"ping":"pong"}
+@app.route("/ping", methods = ["GET"])
+def ping():
+    return {"ping":"pong"}
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

@@ -2,6 +2,7 @@ import requests as rq
 from datetime import datetime
 
 BASE_URL = "http://jaliagaent.pythonanywhere.com"
+#BASE_URL = "http://localhost:5050" # local test
 
 payload = {"input": "this be a test"}
 response = rq.get(BASE_URL, params=payload)
