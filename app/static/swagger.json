@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Joe",
+    "version": "0.1.0",
+    "title": "ent_api",
+    "contact": {
+      "email": "jmfaliaga@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "paths":{
+    "/": {
+      "get":{
+        "summary": "Returns default input",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/?input={input}": {
+      "parameters": [
+        {
+          "name": "input",
+          "in": "path",
+          "required": false,
+          "description": "text to be evaluated",
+          "type": "string"
+        }
+      ],
+      "post":{
+        "summary": "Returns information about the input",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ping": {
+      "get":{
+        "summary": "Returns pong",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get":{
+        "summary": "Returns status of app",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+  }
+
+}
