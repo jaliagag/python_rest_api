@@ -7,4 +7,5 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 5000
 
-ENTRYPOINT ["flask", "run"]
+ENTRYPOINT ["flask"]
+CMD ["run","--host=0.0.0.0"]

@@ -5,6 +5,7 @@ username = 'jaliagaent'
 token = '0aa1753521d2f86b40c8f7c10da1639af269ada0'
 domain_name = "jaliagaent.pythonanywhere.com"
 with open("app/app.py") as f: app = f.read()
+with open("app/static/swagger.json") as f: document = f.read()
 
 #response = requests.get(
 #    #'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/static_files/'.format(username=username, domain_name=domain_name),
@@ -15,6 +16,12 @@ with open("app/app.py") as f: app = f.read()
 response = requests.post(
     'https://www.pythonanywhere.com/api/v0/user/{username}/files/path/home/{username}/mysite/flask_app.py'.format(username=username),
     files={"content": app},
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+
+response = requests.post(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/files/path/home/{username}/mysite/static/swagger.json'.format(username=username),
+    files={"content": document},
     headers={'Authorization': 'Token {token}'.format(token=token)}
 )
 

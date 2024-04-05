@@ -9,7 +9,6 @@ import time
 app = Flask(__name__)
 
 SWAGGER_URL = "/docs"
-#API_URL = "http://petstore.swagger.io/v2/swagger.json"
 API_URL = "/static/swagger.json"
 
 swaggerui_blueprint = get_swaggerui_blueprint(
@@ -36,12 +35,10 @@ def handle_request():
 def health():
     return {"status":"up"}
 
-#@app.route("/static/<path:path>", methods = ["GET"])
-#def send_static():
-#    return send_from_directory("static",path)
+#@app.route("/ping", methods = ["GET"])
+#def ping():
+#    return {"ping":"pong"}
 
-#
-@app.route("/ping", methods = ["GET"])
-def ping():
-    return {"ping":"pong"}
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0')
 
