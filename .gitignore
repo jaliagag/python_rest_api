@@ -1,4 +1,4 @@
 virtual/
-app/__pycache__/
+**/__pycache__/
 passwd
 test/

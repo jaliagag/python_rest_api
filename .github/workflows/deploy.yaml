@@ -25,7 +25,7 @@ jobs:
       #  uses: docker/build-push-action@v5
       #  with:
       #    push: true
-      #    tags: ent_24:latest
+      #    tags: docker/ent_24:latest
 
   tests:
     needs: build
@@ -44,10 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          ls -l
-          tree
-          python3 deploy/main.py
+      - run: python3 deploy/main.py
 
   post-check:
     needs: deploy

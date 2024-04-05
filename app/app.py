@@ -1,24 +1,47 @@
 from flask import Flask
 from flask import request
+from flask_swagger_ui import get_swaggerui_blueprint
+
 import json
 import time
 
+
 app = Flask(__name__)
 
-@app.route('/', methods = ['GET','POST'])
+SWAGGER_URL = "/docs"
+#API_URL = "http://petstore.swagger.io/v2/swagger.json"
+API_URL = "/static/swagger.json"
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to "{SWAGGER_URL}/dist/"
+    API_URL,
+    config={
+        "test_api": "Test application"
+    },
+)
+
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+@app.route("/", methods = ["GET","POST"])
 def handle_request():
-    text = str(request.args.get('input')) # the ?input= a
+    text = str(request.args.get("input")) # the ?input= a
     character_count = len(text)
 
-    data_set = {'input': text,'timestamp': time.time(), 'character_count': character_count}
+    data_set = {"input": text,"timestamp": time.time(), "character_count": character_count}
     json_dump = json.dumps(data_set)
 
     return json_dump
 
-@app.route('/ping', methods = ['GET'])
+@app.route("/health", methods = ["GET"])
+def health():
+    return {"status":"up"}
+
+#@app.route("/static/<path:path>", methods = ["GET"])
+#def send_static():
+#    return send_from_directory("static",path)
+
+#
+@app.route("/ping", methods = ["GET"])
 def ping():
     return {"ping":"pong"}
 
-#@app.route('/health', methods = ['GET'])
-#def health():
-#    return {"status":"up"}
