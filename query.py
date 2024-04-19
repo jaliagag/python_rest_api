@@ -4,7 +4,7 @@ from datetime import datetime
 BASE_URL = "http://jaliagaent.pythonanywhere.com"
 #BASE_URL = "http://localhost:5050" # local test
 
-payload = {"input": "this be a test"}
+payload = {"input": "this be a test hello mancitos"}
 response = rq.get(BASE_URL, params=payload)
 
 json_values = response.json()
